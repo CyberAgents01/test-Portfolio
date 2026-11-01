@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="Ankush Patil — Linux System Administration, Networking, Troubleshooting and Infrastructure portfolio.">
+<title>Ankush Patil | Linux & Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b12;--panel:#101722;--panel2:#141f2d;--line:rgba(163,184,205,.14);--text:#edf4f8;--muted:#9aaaba;--green:#9dfc65;--cyan:#5ce1e6;--orange:#ffb86b;--purple:#b8a0ff;--max:1160px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 12% 8%,rgba(92,225,230,.11),transparent 34%),radial-gradient(ellipse at 88% 35%,rgba(157,252,101,.08),transparent 32%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:auto,auto,48px 48px,48px 48px}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+.topbar{position:fixed;inset:0 0 auto;z-index:50;background:rgba(8,11,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:500 17px "DM Mono",monospace;letter-spacing:-.8px}.brand b{color:var(--green);font-weight:500}.brand span{color:var(--muted)}
+.navlinks{display:flex;gap:27px;align-items:center}.navlinks a{font-size:12px;color:var(--muted);transition:.25s}.navlinks a:hover,.navlinks a.active{color:var(--green)}
+.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(157,252,101,.35);background:rgba(157,252,101,.1);color:var(--green);padding:11px 17px;border-radius:8px;font-size:12px;font-weight:800;transition:.25s}
+.nav-cta:hover,.button:hover{transform:translateY(-3px);background:var(--green);color:#10170d;box-shadow:0 10px 35px rgba(157,252,101,.13)}
+.menu{display:none;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:8px 11px;border-radius:8px}
+.hero{min-height:100svh;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:65px;padding-top:115px;padding-bottom:75px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:11px "DM Mono",monospace;letter-spacing:1.4px;text-transform:uppercase;color:var(--green);border:1px solid rgba(157,252,101,.22);background:rgba(157,252,101,.055);padding:9px 12px;border-radius:5px}
+.pulse{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 0 5px rgba(157,252,101,.1);animation:pulse 2s infinite}
+h1{font-size:clamp(43px,6.2vw,78px);line-height:1.06;letter-spacing:-4px;margin:25px 0 20px;font-weight:800}
+.gradient{background:linear-gradient(100deg,var(--green),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{max-width:650px;color:var(--muted);font-size:15px}
+.hero-copy strong{color:var(--text);font-weight:700}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.button.primary{background:var(--green);color:#10170d;border-color:var(--green)}
+.button.ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.quick-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.quick-tags span,.tag{font:10px "DM Mono",monospace;color:#b9c8d5;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:7px 10px;border-radius:4px}
+.hero-visual{position:relative;min-width:0}
+.terminal{border:1px solid rgba(157,252,101,.22);background:rgba(11,17,25,.92);border-radius:13px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.35),0 0 70px rgba(92,225,230,.07);transform:perspective(1000px) rotateY(-5deg) rotateX(2deg);animation:float 7s ease-in-out infinite}
+.term-head{height:43px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 15px;color:var(--muted);font:10px "DM Mono",monospace}
+.dots{display:flex;gap:6px}.dots i{width:7px;height:7px;border-radius:50%;background:#ff6b6b}.dots i:nth-child(2){background:#ffbd4a}.dots i:nth-child(3){background:var(--green)}
+.term-body{padding:22px 20px 25px;font:11px/2 "DM Mono",monospace;color:#c1cfdb;min-height:285px}
+.prompt{color:var(--green)}.cmd{color:#f0f5f8}.out{color:#7e95a7}.ok{color:var(--green)}.cyan{color:var(--cyan)}.orange{color:var(--orange)}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--green);vertical-align:middle;animation:blink 1s steps(2) infinite}
+.float-chip{position:absolute;background:#172332;border:1px solid var(--line);padding:10px 13px;border-radius:8px;font:10px "DM Mono",monospace;box-shadow:0 12px 35px #0005}
+.chip-one{left:-28px;bottom:24px;color:var(--cyan)}.chip-two{right:-20px;top:30px;color:var(--green)}
+.section{padding:105px 0;position:relative}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:37px}
+.kicker{font:10px "DM Mono",monospace;letter-spacing:2px;color:var(--green);text-transform:uppercase}
+h2{font-size:clamp(29px,4vw,43px);letter-spacing:-1.8px;line-height:1.15;margin-top:9px}
+.section-intro{max-width:490px;color:var(--muted);font-size:13px}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.panel{background:linear-gradient(145deg,rgba(20,31,45,.92),rgba(13,20,30,.92));border:1px solid var(--line);border-radius:12px;padding:27px;transition:border-color .3s,transform .3s}
+.panel:hover{border-color:rgba(157,252,101,.3);transform:translateY(-4px)}
+.panel p{color:var(--muted);font-size:13px}.panel p+p{margin-top:13px}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact{padding:17px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:8px}
+.fact strong{display:block;font-size:21px;color:var(--green);letter-spacing:-1px}.fact span{font-size:10px;color:var(--muted)}
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.focus-card{padding:23px;min-height:205px}.icon{font-size:22px;margin-bottom:15px}.focus-card h3{font-size:16px;margin-bottom:9px}.focus-card p{font-size:12px}
+.focus-card .mini{display:inline-block;margin-top:17px;color:var(--green);font:10px "DM Mono",monospace}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.skill{padding:22px}.skill-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:12px}.skill h3{font-size:14px}.level{font:9px "DM Mono",monospace;color:var(--green);text-transform:uppercase}
+.skill p{color:var(--muted);font-size:11px;margin-bottom:13px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{padding:6px 8px;font-size:9px}
+.skill.primary-skill{border-color:rgba(157,252,101,.27);background:linear-gradient(145deg,rgba(157,252,101,.075),rgba(13,20,30,.95))}
+.skill.secondary-skill .level{color:var(--orange)}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.project{display:flex;flex-direction:column;min-height:285px;position:relative;overflow:hidden}
+.project:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(92,225,230,.055);filter:blur(2px);right:-80px;top:-80px}
+.project-label{font:9px "DM Mono",monospace;color:var(--green);letter-spacing:1.4px;text-transform:uppercase}
+.project h3{font-size:19px;line-height:1.3;margin:14px 0 10px;max-width:440px}
+.project p{font-size:12px;color:var(--muted);max-width:520px}
+.project .tags{margin-top:19px}
+.project-foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font:10px "DM Mono",monospace}
+.project-foot a{color:var(--cyan)}
+.project.featured{grid-column:span 2;min-height:260px;background:linear-gradient(115deg,rgba(25,54,48,.7),rgba(16,23,34,.95) 58%)}
+.project.featured h3{font-size:24px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:step}
+.process-item{padding:21px 17px;position:relative}
+.process-item:before{counter-increment:step;content:"0" counter(step);font:12px "DM Mono",monospace;color:var(--green);display:block;margin-bottom:23px}
+.process-item h3{font-size:14px;margin-bottom:8px}.process-item p{font-size:11px;color:var(--muted)}
+.timeline{max-width:760px;border-left:1px solid rgba(157,252,101,.35);margin-left:8px;padding-left:27px;display:grid;gap:25px}
+.timeline-item{position:relative}.timeline-item:before{content:"";position:absolute;left:-33px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(157,252,101,.1)}
+.timeline-item .date{font:10px "DM Mono",monospace;color:var(--green)}.timeline-item h3{font-size:16px;margin:5px 0}.timeline-item p{font-size:12px;color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr .8fr;gap:35px;align-items:center;background:linear-gradient(120deg,rgba(157,252,101,.08),rgba(92,225,230,.04));border:1px solid rgba(157,252,101,.2);border-radius:15px;padding:clamp(25px,5vw,55px)}
+.contact h2{max-width:550px}.contact p{color:var(--muted);font-size:13px;margin-top:15px;max-width:520px}
+.contact-list{display:grid;gap:12px}.contact-link{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:8px;background:rgba(5,10,16,.35);font-size:12px;overflow-wrap:anywhere;transition:.25s}.contact-link:hover{border-color:var(--green);color:var(--green)}
+.contact-link b{font:10px "DM Mono",monospace;color:var(--green);min-width:48px}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font:10px "DM Mono",monospace}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+.backtop{position:fixed;right:22px;bottom:22px;width:40px;height:40px;border:1px solid var(--line);border-radius:8px;background:#14202d;color:var(--green);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.25s;z-index:30}.backtop.show{opacity:1;pointer-events:auto}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(157,252,101,0)}}@keyframes blink{50%{opacity:0}}@keyframes float{0%,100%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(0)}50%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(-10px)}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:45px;padding-top:135px}.hero-visual{max-width:650px;width:100%;margin:auto}.terminal{transform:none;animation:none}.chip-one{left:-8px}.chip-two{right:-8px}.section-head{display:block}.section-intro{margin-top:13px}.focus-grid{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.container{width:min(100% - 32px,var(--max))}.nav{height:67px}.menu{display:block}.nav-cta{display:none}.navlinks{display:none;position:absolute;top:67px;left:0;right:0;padding:18px 22px 22px;background:rgba(8,11,18,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:16px}.navlinks.open{display:flex}.hero{min-height:auto;padding-top:125px;padding-bottom:65px}h1{letter-spacing:-2.5px}.hero-copy{font-size:13px}.term-body{font-size:9px;padding:17px 13px;min-height:250px}.float-chip{font-size:8px}.section{padding:75px 0}.about-grid,.skills-layout,.project-grid,.contact{grid-template-columns:1fr}.project.featured{grid-column:auto}.focus-grid{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.about-facts{grid-template-columns:1fr 1fr}.panel{padding:21px}.contact{padding:25px}.footer-inner{display:block}.footer-inner span{display:block;margin-top:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="brand" href="#home">ANKUSH<span>.</span><b>SYS</b></a>
+    <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about">ABOUT</a><a href="#focus">FOCUS</a><a href="#skills">SKILLS</a><a href="#projects">PROJECTS</a><a href="#journey">JOURNEY</a><a href="#contact">CONTACT</a>
+    </div>
+    <a class="nav-cta" href="mailto:ankush1510@gmail.com">LET'S CONNECT ↗</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero container" id="home">
+  <div class="reveal">
+    <div class="eyebrow"><span class="pulse"></span> LINUX • NETWORKING • SYSTEMS</div>
+    <h1>Keeping systems<br>running. <span class="gradient">Making networks work.</span></h1>
+    <p class="hero-copy">I'm <strong>Ankush Patil</strong> — an IT Infrastructure & Systems learner focused on <strong>Linux administration, server troubleshooting and networking</strong>. I enjoy understanding what's happening under the hood, fixing issues and building reliable infrastructure.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="#projects">Explore my projects <span>↗</span></a>
+      <a class="button ghost" href="mailto:ankush1510@gmail.com">Get in touch</a>
+    </div>
+    <div class="quick-tags"><span>LINUX ADMINISTRATION</span><span>NETWORK TROUBLESHOOTING</span><span>PYTHON</span></div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="float-chip chip-two">● SYSTEM STATUS: LEARNING</div>
+    <div class="terminal">
+      <div class="term-head"><div class="dots"><i></i><i></i><i></i></div><span>ankush@linux: ~</span><span>bash</span></div>
+      <div class="term-body">
+        <div><span class="prompt">ankush@linux</span>:<span class="cyan">~</span>$ <span class="cmd">whoami</span></div>
+        <div class="out">IT Infrastructure & Linux enthusiast</div>
+        <br>
+        <div><span class="prompt">ankush@linux</span>:<span class="cyan">~</span>$ <span class="cmd">cat core-skills.txt</span></div>
+        <div class="ok">Linux Administration</div>
+        <div class="ok">Server Troubleshooting</div>
+        <div class="ok">Networking & Services</div>
+        <div class="orange">Python • Automation</div>
+        <div class="out">DevOps & AWS fundamentals</div>
+        <br>
+        <div><span class="prompt">ankush@linux</span>:<span class="cyan">~</span>$ <span class="cmd">systemctl status curiosity</span></div>
+        <div><span class="ok">● active (running)</span> <span class="out">— always learning</span></div>
+        <div><span class="prompt">ankush@linux</span>:<span class="cyan">~</span>$ <span class="cursor"></span></div>
+      </div>
+    </div>
+    <div class="float-chip chip-one">[ OK ] NETWORK: CONNECTED</div>
+  </div>
+</section>
+
+<section class="section container" id="about">
+  <div class="section-head reveal"><div><div class="kicker">01 / ABOUT ME</div><h2>Curious by nature.<br><span class="gradient">Hands-on by choice.</span></h2></div><p class="section-intro">I like working close to the system: understanding services, tracing network issues, reading logs and finding the reason something isn't working.</p></div>
+  <div class="about-grid">
+    <article class="panel reveal"><p>I'm Ankush Patil, a Computer Science & Engineering graduate specializing in Cyber Security & Forensics, currently pursuing CDAC PGCP-ITISS (IT Infrastructure, Systems & Security).</p><p>My strongest interests are Linux server administration, networking and practical troubleshooting. I learn best by building labs, configuring services and deliberately testing what can fail — then fixing it.</p><p>I'm growing my Python skills for scripting and automation, while developing a foundation in DevOps tools and AWS cloud infrastructure.</p></article>
+    <div class="about-facts reveal">
+      <div class="fact"><strong>Linux</strong><span>Primary technical focus</span></div>
+      <div class="fact"><strong>ITISS</strong><span>CDAC postgraduate course</span></div>
+      <div class="fact"><strong>Hands-on</strong><span>Lab-based learning</span></div>
+      <div class="fact"><strong>Always on</strong><span>Troubleshooting mindset</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="focus">
+  <div class="section-head reveal"><div><div class="kicker">02 / WHAT I FOCUS ON</div><h2>Infrastructure is more<br>than just <span class="gradient">commands.</span></h2></div><p class="section-intro">The areas I enjoy most — from managing a Linux host to tracing a packet across a network.</p></div>
+  <div class="focus-grid">
+    <article class="panel focus-card reveal"><div class="icon">⌘</div><h3>Linux Administration</h3><p>Managing users, permissions, packages, storage, processes, systemd services, SSH and firewalld on Linux systems.</p><span class="mini">CENTOS · RHEL · DEBIAN · UBUNTU</span></article>
+    <article class="panel focus-card reveal"><div class="icon">⌁</div><h3>Troubleshooting</h3><p>Investigating service failures, logs, connectivity, ports, DNS resolution and configuration issues methodically.</p><span class="mini">SYSTEMCTL · JOURNALCTL · SS · LOGS</span></article>
+    <article class="panel focus-card reveal"><div class="icon">◎</div><h3>Networking</h3><p>Understanding IP addressing, subnetting, routing basics, DNS, DHCP, firewalls and client-server communication.</p><span class="mini">TCP/IP · DNS · DHCP · APACHE</span></article>
+  </div>
+</section>
+
+<section class="section container" id="skills">
+  <div class="section-head reveal"><div><div class="kicker">03 / TECHNICAL TOOLKIT</div><h2>Skills I'm <span class="gradient">building with.</span></h2></div><p class="section-intro">A practical snapshot of the tools and technologies I've studied and used in labs. My strongest focus is Linux, troubleshooting and networking.</p></div>
+  <div class="skills-layout">
+    <article class="panel skill primary-skill reveal"><div class="skill-top"><h3>🐧 Linux System Administration</h3><span class="level">Core focus</span></div><p>System management, configuration and day-to-day administration.</p><div class="tags"><span class="tag">CentOS / RHEL</span><span class="tag">Debian</span><span class="tag">Ubuntu</span><span class="tag">Bash</span><span class="tag">systemd</span><span class="tag">journalctl</span><span class="tag">Users & Permissions</span><span class="tag">Storage</span><span class="tag">SSH</span><span class="tag">firewalld</span><span class="tag">NFS</span><span class="tag">Samba</span></div></article>
+    <article class="panel skill primary-skill reveal"><div class="skill-top"><h3>🌐 Networking & Services</h3><span class="level">Core focus</span></div><p>Network fundamentals, service configuration and connectivity troubleshooting.</p><div class="tags"><span class="tag">TCP/IP</span><span class="tag">IPv4 / CIDR</span><span class="tag">Subnetting</span><span class="tag">DNS / BIND</span><span class="tag">DHCP / Kea</span><span class="tag">Apache</span><span class="tag">Load Balancing</span><span class="tag">Firewall</span><span class="tag">Wireshark</span><span class="tag">Packet Tracer</span><span class="tag">NFS</span><span class="tag">Samba</span></div></article>
+    <article class="panel skill primary-skill reveal"><div class="skill-top"><h3>🧰 Troubleshooting & Operations</h3><span class="level">Core focus</span></div><p>Finding root causes instead of relying on guesswork.</p><div class="tags"><span class="tag">systemctl</span><span class="tag">journalctl</span><span class="tag">ip / nmcli</span><span class="tag">ss / ping</span><span class="tag">dig / nslookup</span><span class="tag">curl</span><span class="tag">top / ps</span><span class="tag">df / lsblk</span><span class="tag">Logs</span><span class="tag">Service Debugging</span></div></article>
+    <article class="panel skill reveal"><div class="skill-top"><h3>🐍 Python</h3><span class="level">Developing</span></div><p>Building programming fundamentals for useful scripts and automation.</p><div class="tags"><span class="tag">Python Basics</span><span class="tag">Functions</span><span class="tag">OOP Fundamentals</span><span class="tag">File Handling</span><span class="tag">Scripting</span></div></article>
+    <article class="panel skill secondary-skill reveal"><div class="skill-top"><h3>⚙️ DevOps & Automation</h3><span class="level">Foundations</span></div><p>Learning tools that support repeatable builds and infrastructure operations.</p><div class="tags"><span class="tag">Git / GitHub</span><span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">Ansible</span><span class="tag">CI/CD</span><span class="tag">Kubernetes basics</span></div></article>
+    <article class="panel skill secondary-skill reveal"><div class="skill-top"><h3>☁️ AWS & Cloud</h3><span class="level">Foundations</span></div><p>Exploring cloud concepts and core infrastructure services.</p><div class="tags"><span class="tag">EC2</span><span class="tag">VPC</span><span class="tag">IAM</span><span class="tag">Cloud Fundamentals</span></div></article>
+  </div>
+</section>
+
+<section class="section container" id="projects">
+  <div class="section-head reveal"><div><div class="kicker">04 / SELECTED WORK</div><h2>Built in labs.<br><span class="gradient">Learned by doing.</span></h2></div><p class="section-intro">A selection of infrastructure projects and practical labs. The main project brings networking, Linux services and automation together.</p></div>
+  <div class="project-grid">
+    <article class="panel project featured reveal"><div class="project-label">FEATURED PROJECT / LINUX INFRASTRUCTURE</div><h3>Linux Network & Load Balancing System</h3><p>Designed a multi-VM Linux environment with DHCP and DNS services, two Apache web servers and an Apache load balancer. Configured internal and bridged networking so clients could reach the web service through a single entry point, with requests distributed across backend servers.</p><div class="tags"><span class="tag">CentOS</span><span class="tag">DHCP / Kea</span><span class="tag">DNS / BIND</span><span class="tag">Apache</span><span class="tag">Load Balancer</span><span class="tag">VirtualBox</span></div><div class="project-foot"><span>3-VM LAB ARCHITECTURE</span><span>NETWORKING + LINUX ↗</span></div></article>
+    <article class="panel project reveal"><div class="project-label">AUTOMATION / CI-CD</div><h3>Automated Web Deployment with Jenkins & Ansible</h3><p>Extended the Linux infrastructure lab with a GitHub-to-Jenkins workflow, using Ansible to automate deployment of website changes to an Apache server.</p><div class="tags"><span class="tag">Jenkins</span><span class="tag">Ansible</span><span class="tag">GitHub</span><span class="tag">SSH</span></div><div class="project-foot"><span>DEPLOYMENT AUTOMATION</span><span>DEVOPS FOUNDATIONS ↗</span></div></article>
+    <article class="panel project reveal"><div class="project-label">LINUX / SERVER SERVICES</div><h3>Linux Server Configuration Labs</h3><p>Hands-on practice configuring SSH, firewalld, users and permissions, NFS exports, Samba shares, network interfaces and core system services.</p><div class="tags"><span class="tag">systemd</span><span class="tag">SSH</span><span class="tag">firewalld</span><span class="tag">NFS</span><span class="tag">Samba</span><span class="tag">nmcli</span></div><div class="project-foot"><span>SYSTEM ADMINISTRATION</span><span>LINUX OPERATIONS ↗</span></div></article>
+    <article class="panel project reveal"><div class="project-label">CONTAINERS / LEARNING LAB</div><h3>Docker Containerization Practice</h3><p>Practiced building images, writing Dockerfiles, running and managing containers, mapping ports and understanding container lifecycle operations.</p><div class="tags"><span class="tag">Docker</span><span class="tag">Dockerfile</span><span class="tag">Port Mapping</span><span class="tag">Linux</span></div><div class="project-foot"><span>CONTAINER FUNDAMENTALS</span><span>DEVOPS FOUNDATIONS ↗</span></div></article>
+  </div>
+  <p style="font-size:10px;color:var(--muted);margin-top:15px">Project descriptions reflect hands-on labs and learning work. Add repository/demo links to each project when you publish them.</p>
+</section>
+
+<section class="section container" id="approach">
+  <div class="section-head reveal"><div><div class="kicker">05 / HOW I TROUBLESHOOT</div><h2>Observe. Investigate.<br><span class="gradient">Fix. Verify.</span></h2></div><p class="section-intro">A structured approach to practical system and network problems.</p></div>
+  <div class="process">
+    <article class="panel process-item reveal"><h3>Understand</h3><p>Reproduce the issue, identify what changed and define the expected behaviour.</p></article>
+    <article class="panel process-item reveal"><h3>Inspect</h3><p>Check service status, logs, processes, IP configuration, routes and listening ports.</p></article>
+    <article class="panel process-item reveal"><h3>Isolate</h3><p>Test one layer at a time — host, network, DNS, firewall, service and application.</p></article>
+    <article class="panel process-item reveal"><h3>Resolve & verify</h3><p>Apply the fix, retest from the client side and document what solved it.</p></article>
+  </div>
+</section>
+
+<section class="section container" id="journey">
+  <div class="section-head reveal"><div><div class="kicker">06 / EDUCATION</div><h2>My learning <span class="gradient">journey.</span></h2></div></div>
+  <div class="timeline reveal">
+    <div class="timeline-item"><div class="date">2026 — PRESENT</div><h3>CDAC PGCP-ITISS</h3><p>IT Infrastructure, Systems & Security — practical learning across Linux, networking, system administration and infrastructure technologies.</p></div>
+    <div class="timeline-item"><div class="date">COMPLETED</div><h3>B.Tech — Computer Science & Engineering</h3><p>Sandip University, Nashik · Specialization in Cyber Security & Forensics.</p></div>
+  </div>
+</section>
+
+<section class="section container" id="contact">
+  <div class="contact reveal">
+    <div><div class="kicker">07 / CONTACT</div><h2>Let's talk about <span class="gradient">systems, networks & opportunities.</span></h2><p>I'm open to connecting with IT infrastructure, Linux, networking and system administration professionals. Feel free to reach out.</p><div class="hero-actions"><a class="button primary" href="mailto:ankush1510@gmail.com">Send me an email ↗</a></div></div>
+    <div class="contact-list">
+      <a class="contact-link" href="tel:+919316742856"><b>PHONE</b><span>+91 93167 42856</span></a>
+      <a class="contact-link" href="mailto:ankush1510@gmail.com"><b>EMAIL</b><span>ankush1510@gmail.com</span></a>
+      <a class="contact-link" href="https://www.linkedin.com/in/ankush-patil-a12b07299" target="_blank" rel="noopener noreferrer"><b>LINKEDIN</b><span>ankush-patil-a12b07299 ↗</span></a>
+      <a class="contact-link" href="https://github.com/CyberAgents01" target="_blank" rel="noopener noreferrer"><b>GITHUB</b><span>github.com/CyberAgents01 ↗</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container footer-inner"><span>© <span id="year"></span> ANKUSH PATIL · BUILT WITH CURIOSITY.</span><span>LINUX • NETWORKING • TROUBLESHOOTING</span></div></footer>
+<a class="backtop" id="backtop" href="#home" aria-label="Back to top">↑</a>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.textContent = '☰';
+}));
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealItems = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && !reduceMotion) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  revealItems.forEach(item => observer.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add('visible'));
+}
+
+const backtop = document.getElementById('backtop');
+window.addEventListener('scroll', () => {
+  backtop.classList.toggle('show', window.scrollY > 500);
+}, {passive:true});
+
+const sections = document.querySelectorAll('main section[id], main header[id]');
+const navAnchors = document.querySelectorAll('.navlinks a');
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, {rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(section => sectionObserver.observe(section));
+}
+</script>
+</body>
+</html>
